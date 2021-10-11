@@ -145,3 +145,22 @@ html {
   font-size: small;
   margin-top: 10px;
 }
+
+.project {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.diskette {
+  width: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.project_description {
+  width: 90%;
+  margin-left: 1%;
+}
