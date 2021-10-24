@@ -6,6 +6,9 @@ html {
   font-family: MS;
   background-color: #008080;
 }
+a:visited {
+  color: #0000ff;
+}
 
 .container {
   background-color: white;
