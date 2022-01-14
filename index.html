@@ -377,13 +377,26 @@
           <span>Instagram</span>
         </div>
       </a>
+
       <a href="https://spotify-readme.ishu2.repl.co/nowPlaying/url">
         <div class="social-link">
           <img
-            src="https://spotify-readme.ishu2.repl.co/nowPlaying/image"
+            src="https://spotify-readme.ishu2.repl.co/nowPlaying/image?t=90"
             alt=""
           />
-          <span>Now Playing</span>
+          <span>
+            <!-- style="width: 50px" -->
+            <marquee
+              id="song-name"
+              width="50"
+              height="20"
+              behavior="scroll"
+              direction="left"
+              scrollamount="2"
+            >
+              Song Name :)
+            </marquee>
+          </span>
         </div>
       </a>
     </div>
@@ -416,6 +429,36 @@
       </div>
 
       <div id="clock">12:44 AM</div>
+    </div>
+
+    <!-- Mobile  -->
+    <div class="mobile">
+      <a href="https://spotify-readme.ishu2.repl.co/nowPlaying/url">
+        <div class="mobile-song">
+          <h4>Currently - Playing</h4>
+          <img
+            id="mobile-song-image"
+            src="https://spotify-readme.ishu2.repl.co/nowPlaying/image?t=90"
+            alt=""
+          />
+          <br />
+          <br />
+          <marquee
+            style="font-size: 30px"
+            width="70%"
+            id="mobile-song-name"
+            behavior="scroll"
+            direction="left"
+            scrollamount="5"
+          >
+            Song Name :)
+          </marquee>
+        </div>
+      </a>
+      <br />
+      <a style="position: fixed; bottom: 20%" href="https://github.com/ish-u"
+        >github</a
+      >
     </div>
   </body>
 </html>

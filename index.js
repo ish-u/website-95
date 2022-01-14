@@ -1,11 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
+  getSongDetails();
   getBlogs();
+
   const buttons = document.getElementsByClassName("button");
   for (let i = 0; i < buttons.length; i++) {
     buttons.item(i).addEventListener("click", (event) => {
       changeActiveButton(buttons.item(i).dataset.name);
     });
   }
+
+  // updating song details every 30 seconds
+  setInterval(async () => {
+    await getSongDetails();
+  }, 5000);
 });
 
 // Clock Function
@@ -107,4 +114,33 @@ function getBlogs() {
       blogWindow.appendChild(blogContainer);
     })
     .catch((err) => console.log(err));
+}
+
+// get song details
+async function getSongDetails() {
+  await fetch("https://spotify-readme.ishu2.repl.co/nowPlaying/plainText")
+    .then((res) => res.json())
+    .then((resJSON) => {
+      // updating Text
+      var songText = resJSON.name;
+      songText += " ";
+      resJSON.artists.forEach((artist) => {
+        songText += " - " + artist;
+      });
+      const songName = document.getElementById("song-name");
+      const mobileSongName = document.getElementById("mobile-song-name");
+      mobileSongName.innerText = songText;
+      songName.innerText = songText;
+
+      // updating Image
+      const songImage = document.querySelectorAll(".social-link img")[2];
+      const mobile_songImage = document.getElementById("mobile-song-image");
+
+      songImage.src =
+        "https://spotify-readme.ishu2.repl.co/nowPlaying/image?t=" +
+        new Date().getMilliseconds();
+      mobile_songImage.src =
+        "https://spotify-readme.ishu2.repl.co/nowPlaying/image?t=" +
+        new Date().getMilliseconds();
+    });
 }

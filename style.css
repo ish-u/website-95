@@ -141,8 +141,8 @@ a:visited {
   color: white;
 }
 .social-link img {
-  height: 32px;
-  width: 32px;
+  height: 36px;
+  width: 36px;
 }
 .social-link span {
   font-size: small;
@@ -166,4 +166,39 @@ a:visited {
 .project_description {
   width: 90%;
   margin-left: 1%;
+}
+
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .container,
+  .taskbar,
+  .social-link {
+    display: none;
+  }
+  .mobile {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+  }
+  #mobile-song-image {
+    width: 70%;
+  }
+  .mobile-song {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+  }
+  a {
+    text-decoration: none;
+    color: white !important;
+  }
 }
