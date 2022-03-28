@@ -1,7 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-  getSongDetails();
-  getBlogs();
-
+document.addEventListener("DOMContentLoaded", async () => {
   const buttons = document.getElementsByClassName("button");
   for (let i = 0; i < buttons.length; i++) {
     buttons.item(i).addEventListener("click", (event) => {
@@ -9,10 +6,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  await getSongDetails();
+  await getBlogs();
+
+  setTimeout(() => {
+    document.getElementById("content").style.display = "block";
+    document.getElementById("loader").style.display = "none";
+  }, 1000);
+
   // updating song details every 30 seconds
   setInterval(async () => {
     await getSongDetails();
-  }, 5000);
+  }, 30000);
 });
 
 // Clock Function
@@ -25,9 +30,8 @@ setInterval(() => {
 function changeActiveButton(name) {
   const buttons = document.getElementsByClassName("button");
   const windows = document.getElementsByClassName("container");
-  console.log;
   for (let i = 0; i < buttons.length; i++) {
-    if (buttons.item(i).dataset.name == name) {
+    if (buttons.item(i).dataset.name === name) {
       buttons.item(i).className = "button active";
       windows.item(i).className = "container";
     } else {
@@ -62,7 +66,7 @@ function hideBlog() {
 }
 
 // get blogs
-function getBlogs() {
+async function getBlogs() {
   fetch("https://anmoldoesleetcode.ishu2.repl.co/api/posts/blogs")
     .then((res) => res.json())
     .then((resJSON) => {
@@ -121,17 +125,6 @@ async function getSongDetails() {
   await fetch("https://spotify-readme.ishu2.repl.co/nowPlaying/plainText")
     .then((res) => res.json())
     .then((resJSON) => {
-      // updating Text
-      var songText = resJSON.name;
-      songText += " ";
-      resJSON.artists.forEach((artist) => {
-        songText += " - " + artist;
-      });
-      const songName = document.getElementById("song-name");
-      const mobileSongName = document.getElementById("mobile-song-name");
-      mobileSongName.innerText = songText;
-      songName.innerText = songText;
-
       // updating Image
       const songImage = document.querySelectorAll(".social-link img")[2];
       const mobile_songImage = document.getElementById("mobile-song-image");
@@ -142,5 +135,16 @@ async function getSongDetails() {
       mobile_songImage.src =
         "https://spotify-readme.ishu2.repl.co/nowPlaying/image?t=" +
         new Date().getMilliseconds();
+
+      // updating Text
+      var songText = resJSON.name;
+      songText += " ";
+      resJSON.artists.forEach((artist) => {
+        songText += " - " + artist;
+      });
+      const songName = document.getElementById("song-name");
+      const mobileSongName = document.getElementById("mobile-song-name");
+      mobileSongName.innerText = songText;
+      songName.innerText = songText;
     });
 }
