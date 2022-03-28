@@ -5,14 +5,10 @@
 html {
   font-family: MS;
   background-color: #008080;
-  /* cursor: url(http://www.rw-designer.com/cursor-extern.php?id=151727), auto; */
 }
 a:visited {
   color: #0000ff;
 }
-/* a:hover {
-  cursor: url(http://www.rw-designer.com/cursor-extern.php?id=151740), auto;
-} */
 
 .container {
   background-color: white;
