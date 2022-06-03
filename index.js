@@ -1,4 +1,18 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  // Fetching Song Status and Blogs
+  await getSongDetails();
+  await getBlogs();
+
+  setTimeout(() => {
+    document.getElementById("content").style.display = "block";
+    document.getElementById("loader").style.display = "none";
+  }, 1000);
+
+  // updating song details every 30 seconds
+  setInterval(async () => {
+    await getSongDetails();
+  }, 30000);
+
   // Task Bar Buttons
   const buttons = document.getElementsByClassName("button");
   for (let i = 0; i < buttons.length; i++) {
@@ -24,18 +38,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  await getSongDetails();
-  await getBlogs();
+  // Start Button and Start Menu
+  const startButton = document.getElementById("start-button");
+  const startMenu = document.getElementsByClassName("start-menu")[0];
+  startButton.addEventListener("click", (event) => {
+    if (startMenu.className === "start-menu") {
+      startMenu.className = "start-menu hide";
+    } else {
+      startMenu.className = "start-menu";
+    }
+  });
 
-  setTimeout(() => {
-    document.getElementById("content").style.display = "block";
-    document.getElementById("loader").style.display = "none";
-  }, 1000);
-
-  // updating song details every 30 seconds
-  setInterval(async () => {
-    await getSongDetails();
-  }, 30000);
+  const startMenuButton = document.getElementsByClassName("menu-button");
+  for (let i = 0; i < startMenuButton.length; i++) {
+    startMenuButton.item(i).addEventListener("click", (event) => {
+      changeActiveButton(startMenuButton.item(i), false);
+    });
+  }
 });
 
 // Clock Function
@@ -46,17 +65,19 @@ setInterval(() => {
 
 // Change Active Button
 function changeActiveButton(button, resetWindow) {
-  console.log(button);
   const window = document.querySelector(`[data-name=${button.dataset.name}]`);
+  const taskBarButton = document.querySelector(
+    `.button[data-name=${button.dataset.name}]`
+  );
   if (resetWindow === true) {
     window.style.left = "25vw";
     window.style.top = "10vh";
     window.style.zIndex = "";
     window.className = "container hide";
-    const taskBarButton = document.querySelector(
-      `.button[data-name=${button.dataset.name}]`
-    );
-    taskBarButton.className = "button";
+    if (taskBarButton) {
+      taskBarButton.className = "button";
+      taskBarButton.style.display = "none";
+    }
   } else {
     if (
       button.className === "button" ||
@@ -64,10 +85,15 @@ function changeActiveButton(button, resetWindow) {
     ) {
       button.className = "button active";
       window.className = "container";
-      moveWindowToFront(button.dataset.name);
+      // moveWindowToFront(button.dataset.name);
     } else if (button.className === "button active") {
       button.className = "button minimized";
       window.className = "container hide";
+    } else if (button.className === "menu-button") {
+      window.className = "container";
+      taskBarButton.style.display = "flex";
+      taskBarButton.className = "button active";
+      moveWindowToFront(button.dataset.name);
     }
   }
 }
@@ -86,11 +112,6 @@ function moveWindowToFront(windowName) {
   for (let i = 0; i < windows.length; i++) {
     if (windows.item(i).dataset.name === windowName) {
       windows.item(i).style.zIndex = 1000;
-      console.log(
-        windows.item(i).dataset.name,
-        windows.item(i).style.zIndex,
-        windowName
-      );
     } else {
       windows.item(i).style.zIndex = Number(windows.item(i).style.zIndex) - 1;
     }

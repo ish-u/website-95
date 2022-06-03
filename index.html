@@ -32,7 +32,20 @@
       <img src="./static/loading.webp" alt="" srcset="" />
     </div>
     <div id="content" style="display: none">
-      <div class="container" data-name="about_me">
+      <div id="instructions" class="container" data-name="instructions">
+        <div class="title-container">
+          <div class="close" data-name="instructions"><b>x</b></div>
+          <div class="title">
+            <span>Welcome</span>
+          </div>
+        </div>
+        <div class="content">
+          Click on the Start Menu and Explore
+          <br />
+          (〜￣▽￣)〜
+        </div>
+      </div>
+      <div class="container hide" data-name="about_me">
         <div class="title-container">
           <div class="close" data-name="about_me"><b>x</b></div>
           <div class="title">
@@ -457,32 +470,59 @@
 
       <div class="taskbar">
         <img
-          class="start-button"
+          id="start-button"
           src="https://i.pinimg.com/originals/0b/32/fb/0b32fb0f7b144ec745d4e3b5f3f783fa.png"
           alt=""
         />
-        <div class="button active" data-name="about_me">
+        <div class="button" data-name="about_me" style="display: none">
           <img src="./static/Info (gray).ICO" alt="" srcset="" />
           <span> About Me </span>
         </div>
-        <div class="button" data-name="education">
+        <div class="button" data-name="education" style="display: none">
           <img src="./static/Book.ico" alt="" srcset="" />
           <span> Education </span>
         </div>
-        <div class="button" data-name="projects">
+        <div class="button" data-name="projects" style="display: none">
           <img src="./static/Gray briefcase.ico" alt="" />
           <span> Projects </span>
         </div>
-        <div class="button" data-name="blog">
+        <div class="button" data-name="blog" style="display: none">
           <img src="./static/Computer are Earth.ico" alt="" srcset="" />
           <span> Blog </span>
         </div>
-        <div class="button" data-name="contact">
+        <div class="button" data-name="contact" style="display: none">
           <img src="./static/Phone (2 of 5 diodes on).ico" alt="" />
           <span> Contact Me </span>
         </div>
 
         <div id="clock">12:44 AM</div>
+      </div>
+
+      <div class="start-menu hide">
+        <div class="side-bar">
+          <span class="logo-text">Website</span>
+          <span class="logo-number">95</span>
+        </div>
+        <div class="menu-button" data-name="about_me">
+          <img src="./static/Info (gray).ICO" alt="" srcset="" />
+          <span> About Me </span>
+        </div>
+        <div class="menu-button" data-name="education">
+          <img src="./static/Book.ico" alt="" srcset="" />
+          <span> Education </span>
+        </div>
+        <div class="menu-button" data-name="projects">
+          <img src="./static/Gray briefcase.ico" alt="" />
+          <span> Projects </span>
+        </div>
+        <div class="menu-button" data-name="blog">
+          <img src="./static/Computer are Earth.ico" alt="" srcset="" />
+          <span> Blog </span>
+        </div>
+        <div class="menu-button" data-name="contact">
+          <img src="./static/Phone (2 of 5 diodes on).ico" alt="" />
+          <span> Contact Me </span>
+        </div>
       </div>
 
       <!-- Mobile  -->

@@ -28,9 +28,34 @@ a:visited {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   line-height: 1.5rem;
 }
+
+#instructions{
+  height: 15vh;
+  width: 25vw;
+  top: 35vh;
+  left: 35vw;
+  background-color: #b5b3b3;
+  box-shadow: inset 0px 0px 0px black, 2px 2px 2px black, -1px -1px 1px white;
+
+}
+#instructions .title-container{
+  box-shadow: none;
+  margin-bottom: 0;
+}
+#instructions .content{
+  text-align: center;
+  background-color: #b5b3b3;
+  overflow: hidden;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  line-height: 2rem;
+
+}
+
 
 .title-container {
   background-color: #b5b3b3;
@@ -85,7 +110,7 @@ a:visited {
   padding-bottom: 2px;
 }
 
-.start-button {
+#start-button {
   width: 5rem;
 }
 
@@ -176,6 +201,72 @@ a:visited {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.start-menu{
+  min-width: 25vh;
+  padding: 5px;
+  margin: 5px;
+  box-shadow: inset 2px 2px white, 2px 2px 2px black;
+  position: absolute;
+  bottom: 2.75rem;
+  z-index: 10000000;
+  left: 0;
+  background-color: #b5b3b3;
+}
+
+.menu-button
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  padding: 0.5em;
+  margin-left: 15%;
+  align-items: center;
+}
+
+.menu-button:hover{
+  background: #0000aa;
+  color: white;
+  z-index: 10;
+}
+
+.side-bar
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15%;
+  height: 98%;
+  z-index: -10;
+  background: #808080;
+  writing-mode:vertical-lr;
+  transform: rotate(-180deg);
+  margin: 3px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+}
+
+.side-bar .logo-text{
+  margin-top: 10px;
+  font-weight:900;
+  color: rgba(182, 180, 180, 0.7);
+  font-size: x-large;
+}
+
+.side-bar .logo-number{
+  margin-top: 5px;
+  color: white;
+  font-size: x-large;
+}
+
+.menu-button img{
+  margin-right: 10px;
+  height: 2rem;
+  width: 2rem;
+
 }
 
 .project_description {
