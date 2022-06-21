@@ -1,12 +1,10 @@
 document.addEventListener("DOMContentLoaded", async () => {
   // Fetching Song Status and Blogs
   await getSongDetails();
-  await getBlogs();
+  getBlogs();
 
-  setTimeout(() => {
-    document.getElementById("content").style.display = "block";
-    document.getElementById("loader").style.display = "none";
-  }, 1000);
+  document.getElementById("content").style.display = "block";
+  document.getElementById("loader").style.display = "none";
 
   // updating song details every 30 seconds
   setInterval(async () => {
