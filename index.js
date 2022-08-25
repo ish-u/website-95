@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", async () => {
   // Fetching Song Status and Blogs
-  await getSongDetails();
+  getSongDetails();
   getBlogs();
 
-  document.getElementById("content").style.display = "block";
-  document.getElementById("loader").style.display = "none";
+  setTimeout(() => {
+    document.getElementById("content").style.display = "block";
+    document.getElementById("loader").style.display = "none";
+  }, 1000);
 
   // updating song details every 30 seconds
   setInterval(async () => {
@@ -144,7 +146,7 @@ function hideBlog() {
 
 // get blogs
 async function getBlogs() {
-  fetch("https://anmoldoesleetcode.ishu2.repl.co/api/posts/blogs")
+  await fetch("https://anmoldoesleetcode.ishu2.repl.co/api/posts/blogs")
     .then((res) => res.json())
     .then((resJSON) => {
       const blogWindow = document.querySelector(`[data-name="blog"]`);
@@ -202,6 +204,11 @@ async function getBlogs() {
 
 // get song details
 async function getSongDetails() {
+  const songName = document.getElementById("song-name");
+  const mobileSongName = document.getElementById("mobile-song-name");
+  mobileSongName.innerText = "Loading";
+  songName.innerText = "Loading";
+
   await fetch("https://spotify-readme.ishu2.repl.co/nowPlaying/plainText")
     .then((res) => res.json())
     .then((resJSON) => {
