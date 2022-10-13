@@ -334,3 +334,23 @@ a:visited {
     color: white !important;
   }
 }
+
+.job-banner
+{
+  position:fixed;
+  top: 4;
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: larger; 
+  color: white;
+}
+
+.job-banner a{
+  color: rgba(0, 0, 0, 0.7);
+}

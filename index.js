@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   setTimeout(() => {
     document.getElementById("content").style.display = "block";
     document.getElementById("loader").style.display = "none";
+    // document.getElementById("banner").style.display = "flex";
   }, 1000);
 
   // updating song details every 30 seconds
