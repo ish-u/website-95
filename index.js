@@ -214,7 +214,7 @@ async function getSongDetails() {
     .then((res) => res.json())
     .then((resJSON) => {
       // updating Image
-      const songImage = document.querySelectorAll(".social-link img")[2];
+      const songImage = document.querySelectorAll(".social-link img")[3];
       const mobile_songImage = document.getElementById("mobile-song-image");
 
       songImage.src =
