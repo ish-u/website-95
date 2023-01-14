@@ -407,3 +407,29 @@ a:visited {
 .job-banner a {
   color: rgba(0, 0, 0, 0.7);
 }
+
+.paint{
+  height: 100%;
+}
+
+.paint-area{
+  height:85%;
+  border: 1px solid black;
+  display: flex;
+}
+
+.paint-options{
+  width: 15%; 
+  border: 1px solid black
+}
+
+.paint-canvas{
+  flex-grow: 1;
+  border: 1px solid black
+
+}
+
+.paint-color{
+  height:15%;
+  border: 1px solid black
+}

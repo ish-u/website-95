@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("content").style.display = "block";
     document.getElementById("loader").style.display = "none";
     // document.getElementById("banner").style.display = "flex";
-  }, 000);
+  }, 1000);
 
   // updating song details every 30 seconds
   setInterval(async () => {
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Task Bar Buttons
   const buttons = document.getElementsByClassName("button");
   for (let i = 0; i < buttons.length; i++) {
-    buttons.item(i).addEventListener("click", (event) => {
+    buttons.item(i).addEventListener("click", () => {
       changeActiveButton(buttons.item(i), false);
     });
   }
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Close Buttons
   const closeButtons = document.getElementsByClassName("close");
   for (let i = 0; i < closeButtons.length; i++) {
-    closeButtons.item(i).addEventListener("click", (event) => {
+    closeButtons.item(i).addEventListener("click", () => {
       changeActiveButton(closeButtons.item(i), true);
     });
   }
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const windows = document.getElementsByClassName("container");
   for (let i = 0; i < windows.length; i++) {
     dragElement(windows.item(i));
-    windows.item(i).addEventListener("click", (event) => {
+    windows.item(i).addEventListener("click", () => {
       moveWindowToFront(windows.item(i).dataset.name);
     });
   }
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Start Button and Start Menu
   const startButton = document.getElementById("start-button");
   const startMenu = document.getElementsByClassName("start-menu")[0];
-  startButton.addEventListener("click", (event) => {
+  startButton.addEventListener("click", () => {
     if (startMenu.className === "start-menu") {
       startMenu.className = "start-menu hide";
     } else {
@@ -52,10 +52,55 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const startMenuButton = document.getElementsByClassName("menu-button");
   for (let i = 0; i < startMenuButton.length; i++) {
-    startMenuButton.item(i).addEventListener("click", (event) => {
+    startMenuButton.item(i).addEventListener("click", () => {
       changeActiveButton(startMenuButton.item(i), false);
     });
   }
+
+  // // Canvas
+  // let canvas = document.getElementById("canvas");
+  // const ctx = canvas.getContext("2d");
+  // //
+  // let mouseX = 0;
+  // let mouseY = 0;
+  // ctx.strokeStyle = "black"; // initial brush color
+  // ctx.lineWidth = 10; // initial brush width
+  // let boundings = canvas.getBoundingClientRect();
+  // let isDrawing = false;
+  // // ctx.moveTo(0, 0);
+  // // ctx.lineTo(300, 400);
+  // //
+  // ctx.moveTo(mouseX, mouseY);
+  // ctx.lineTo(200, 100);
+  // ctx.stroke();
+  // canvas.addEventListener("mousedown", (e) => {
+  //   console.log("down");
+  //   // mouseX = e.clientX;
+  //   // mouseY = e.clientY;
+  //   mouseX = e.clientX - boundings.left;
+  //   mouseY = e.clientY - boundings.top;
+  //   isDrawing = true;
+  // });
+  //
+  // canvas.addEventListener("mousemove", (e) => {
+  //   if (isDrawing) {
+  //     console.log("move", e.clientX, e.clientY, mouseX, mouseY);
+  //     ctx.strokeStyle = "black"; // initial brush color
+  //     ctx.lineWidth = 1; // initial brush width
+  //     // ctx.moveTo(mouseX, mouseY);
+  //     ctx.lineTo(e.clientX - boundings.left, e.clientY - boundings.top);
+  //     ctx.stroke();
+  //     mouseX = e.clientX - boundings.left;
+  //     mouseY = e.clientY - boundings.top;
+  //   }
+  // });
+  //
+  // canvas.addEventListener("mouseup", (e) => {
+  //   console.log("up");
+  //   mouseX = e.clientX - boundings.left;
+  //   mouseY = e.clientY - boundings.top;
+  //   isDrawing = false;
+  // });
 });
 
 // Clock Function
@@ -102,7 +147,7 @@ function changeActiveButton(button, resetWindow) {
 // Move the clicked window to front
 function moveWindowToFront(windowName) {
   const windows = document.querySelectorAll(".container:not(.hide)");
-  var zValues = [];
+  let zValues = [];
   for (let i = 0; i < windows.length; i++) {
     if (windows.item(i).style.zIndex === "") {
       windows.item(i).style.zIndex = 1000;
@@ -225,7 +270,7 @@ async function getSongDetails() {
         new Date().getMilliseconds();
 
       // updating Text
-      var songText = resJSON.name;
+      let songText = resJSON.name;
       songText += " ";
       resJSON.artists.forEach((artist) => {
         songText += " - " + artist;
@@ -239,7 +284,7 @@ async function getSongDetails() {
 
 // Taken From w3Schools - https://www.w3schools.com/howto/howto_js_draggable.asp
 function dragElement(elmnt) {
-  var pos1 = 0,
+  let pos1 = 0,
     pos2 = 0,
     pos3 = 0,
     pos4 = 0;
@@ -269,7 +314,7 @@ function dragElement(elmnt) {
     pos3 = e.clientX;
     pos4 = e.clientY;
     // set the element's new position:
-    var offsetLeft =
+    let offsetLeft =
       elmnt.offsetLeft - pos1 > e.clientX
         ? elmnt.offsetLeft - e.clientY
         : elmnt.offsetLeft - pos1;
@@ -283,3 +328,5 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
+
+// PAINT
