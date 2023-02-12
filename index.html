@@ -8,23 +8,9 @@
     <script src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <title>anmol</title>
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="./favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="./favicon/favicon-16x16.png"
-    />
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
     <link rel="manifest" href="./favicon/site.webmanifest" />
   </head>
 
@@ -44,17 +30,13 @@
     -->
 
     <div id="content" style="display: none">
-      <div class="container " data-name="about_me">
+      <div class="container" data-name="about_me">
         <div class="title-container">
           <div class="close" data-name="about_me"><b>x</b></div>
-          <div class="title">
-            <span>About Me</span>
-          </div>
+          <div class="title"><span>About Me</span></div>
         </div>
         <div class="content">
-          hello internet, I am Anmol.
-          <br />
-          I am an aspiring
+          hello internet, I am Anmol. I am a
           <b>Full-Stack Developer</b>.
           <!-- I am currently working as a -->
           <!-- <em> Backend Developer </em> -->
@@ -70,9 +52,7 @@
             </li>
             <li>
               taking random/blurry
-              <a href="https://www.instagram.com/user_no_01/">
-                pictures/videos
-              </a>
+              <a href="https://www.instagram.com/user_no_01/"> pictures/videos </a>
             </li>
             <li>listening to music</li>
             <li>Internet</li>
@@ -82,37 +62,61 @@
             <b>
               Anywhere can be paradise as long as you have the will to live.
               <br />
-              After all, you are alive, so you will always have the chance to be
-              happy.
+              After all, you are alive, so you will always have the chance to be happy.
               <br />
-              As long as the Sun, the Moon, and the Earth exist, everything will
-              be all right.
+              As long as the Sun, the Moon, and the Earth exist, everything will be all right.
               <p><em> -Yui Ikari, Neon Genesis Evangelion</em></p>
             </b>
           </blockquote>
-          <div id="instructions">
-            Click on the Start Menu for Education, Projects and Contact Info.
-          </div>
+          <div id="instructions">Click on the Start Menu for Education, Projects and Contact Info.</div>
         </div>
       </div>
 
-      <!-- <div class="container" data-name="paint"> -->
-      <!--   <div class="title-container"> -->
-      <!--     <div class="close" data-name="paint"><b>x</b></div> -->
-      <!--     <div class="title"> -->
-      <!--       <span>Paint</span> -->
-      <!--     </div> -->
-      <!--   </div> -->
-      <!--   <div class="paint"> -->
-      <!--     <div class="paint-area"> -->
-      <!--       <div class="paint-options"></div> -->
-      <!--       <div class="paint-canvas"> -->
-      <!--         <canvas id="canvas"></canvas> -->
-      <!--       </div> -->
-      <!--     </div> -->
-      <!--     <div class="paint-color"></div> -->
-      <!--   </div> -->
-      <!-- </div> -->
+      <div class="container hide" data-name="paint">
+        <div id="paint-title" class="title-container">
+          <div class="close" data-name="paint"><b>x</b></div>
+          <div class="title">
+            <span>Paint</span>
+          </div>
+        </div>
+        <div class="paint">
+          <div class="paint-area">
+            <div id="paint-options">
+              <div class="paint-tools">
+                <div id="line"></div>
+                <div id="eraser"></div>
+              </div>
+              <div id="stroke-menu">
+                <div class="stroke-option stroke-option-selected" id="stroke-one">
+                  <svg height="10" width="90">
+                    <line x1="0" y1="0" x2="90" y2="0" style="stroke: rgb(0, 0, 0); stroke-width: 3" />
+                  </svg>
+                </div>
+                <div class="stroke-option" id="stroke-two">
+                  <svg height="10" width="90">
+                    <line x1="0" y1="0" x2="90" y2="0" style="stroke: rgb(0, 0, 0); stroke-width: 6" />
+                  </svg>
+                </div>
+                <div class="stroke-option" id="stroke-three">
+                  <svg height="10" width="90">
+                    <line x1="0" y1="0" x2="90" y2="0" style="stroke: rgb(0, 0, 0); stroke-width: 9" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="paint-canvas">
+              <canvas id="canvas"></canvas>
+            </div>
+          </div>
+          <div id="paint-colors">
+            <div id="color-switcher">
+              <div id="color-one"></div>
+              <div id="color-two"></div>
+            </div>
+            <div id="color-list"></div>
+          </div>
+        </div>
+      </div>
 
       <div class="container hide" data-name="experience">
         <div class="title-container">
@@ -167,14 +171,8 @@
                   </div>
                 </div>
                 <div class="exp-description">
-                  <div>
-                    - Developed the front-end of an internal tool using vue.js
-                    and vuetify
-                  </div>
-                  <div>
-                    - Integrated the GraphQL API using vue-apollo to the
-                    front-end
-                  </div>
+                  <div>- Developed the front-end of an internal tool using vue.js and vuetify</div>
+                  <div>- Integrated the GraphQL API using vue-apollo to the front-end</div>
                 </div>
               </div>
             </div>
@@ -265,9 +263,7 @@
                 <span>A Spotify Client</span>
                 <br />
 
-                <span style="font-size: small"
-                  >used:- Next.JS, NextAuth, TailwindCSS, Prisma
-                </span>
+                <span style="font-size: small">used:- Next.JS, NextAuth, TailwindCSS, Prisma </span>
               </div>
             </div>
           </div>
@@ -280,19 +276,12 @@
             </div>
             <div class="project_description">
               <div>
-                <span
-                  ><a href="https://github.com/ish-u/stream-site"
-                    >stream-site
-                  </a></span
-                >
+                <span><a href="https://github.com/ish-u/stream-site">stream-site </a></span>
                 <br />
                 <span>A Streaming Service </span>
                 <br />
 
-                <span style="font-size: small"
-                  >used:- Vue.JS, Vuetify, Express.JS, MongoDB, JWT, Mongoose,
-                  Socket.IO, nginx, Video.JS, Docker
-                </span>
+                <span style="font-size: small">used:- Vue.JS, Vuetify, Express.JS, MongoDB, JWT, Mongoose, Socket.IO, nginx, Video.JS, Docker </span>
               </div>
             </div>
           </div>
@@ -305,18 +294,12 @@
             </div>
             <div class="project_description">
               <div>
-                <span
-                  ><a href="https://github.com/ish-u/codeflix_"
-                    >codeflix</a
-                  ></span
-                >
+                <span><a href="https://github.com/ish-u/codeflix_">codeflix</a></span>
                 <br />
                 <span>netflix-like platfrom for MOOCs and Tutorials </span>
                 <br />
 
-                <span style="font-size: small"
-                  >used:- Vue.JS, BootStrap, Express.JS, MongoDB, JWT
-                </span>
+                <span style="font-size: small">used:- Vue.JS, BootStrap, Express.JS, MongoDB, JWT </span>
               </div>
             </div>
           </div>
@@ -329,16 +312,12 @@
             </div>
             <div class="project_description">
               <div>
-                <span
-                  ><a href="https://github.com/ish-u/motions">motions </a></span
-                >
+                <span><a href="https://github.com/ish-u/motions">motions </a></span>
                 <br />
                 <span>A Desktop App to create Stop-Motion Animations </span>
                 <br />
 
-                <span style="font-size: small"
-                  >used:- tauri, React, TailwindCSS, ffmpeg
-                </span>
+                <span style="font-size: small">used:- tauri, React, TailwindCSS, ffmpeg </span>
               </div>
             </div>
           </div>
@@ -351,18 +330,12 @@
             </div>
             <div class="project_description">
               <div>
-                <span
-                  ><a href="https://github.com/ish-u/expense-manager"
-                    >expense-manager
-                  </a></span
-                >
+                <span><a href="https://github.com/ish-u/expense-manager">expense-manager </a></span>
                 <br />
                 <span>A Simple Expense Manager </span>
                 <br />
 
-                <span style="font-size: small"
-                  >used:- Vue.JS, BootStrap, Express.JS, MongoDB, JWT
-                </span>
+                <span style="font-size: small">used:- Vue.JS, BootStrap, Express.JS, MongoDB, JWT </span>
               </div>
             </div>
           </div>
@@ -375,21 +348,12 @@
             </div>
             <div class="project_description">
               <div>
-                <span
-                  ><a href="https://github.com/ish-u/ytm_tui"
-                    >YouTube Music TUI
-                  </a></span
-                >
+                <span><a href="https://github.com/ish-u/ytm_tui">YouTube Music TUI </a></span>
                 <br />
-                <span
-                  >A Terminal UI made with Go and bubbletea to play music form
-                  YouTube
-                </span>
+                <span>A Terminal UI made with Go and bubbletea to play music form YouTube </span>
                 <br />
 
-                <span style="font-size: small"
-                  >used:- Go, bubbletea, ffmpeg
-                </span>
+                <span style="font-size: small">used:- Go, bubbletea, ffmpeg </span>
               </div>
             </div>
           </div>
@@ -402,22 +366,12 @@
             </div>
             <div class="project_description">
               <div>
-                <span
-                  ><a href="https://github.com/ish-u/computer-graphics"
-                    >computer-graphics
-                  </a></span
-                >
+                <span><a href="https://github.com/ish-u/computer-graphics">computer-graphics </a></span>
                 <br />
-                <span
-                  >Implementation of various Line Drawing, Circle Drawing, Curve
-                  Drawing Algorithms with 2-D and 3-D Linear Transformation of
-                  Objects
-                </span>
+                <span>Implementation of various Line Drawing, Circle Drawing, Curve Drawing Algorithms with 2-D and 3-D Linear Transformation of Objects </span>
                 <br />
 
-                <span style="font-size: small"
-                  >used:- winbgim (Borland Graphics - graphics.h)
-                </span>
+                <span style="font-size: small">used:- winbgim (Borland Graphics - graphics.h) </span>
               </div>
             </div>
           </div>
@@ -430,21 +384,12 @@
             </div>
             <div class="project_description">
               <div>
-                <span
-                  ><a href="https://github.com/ish-u/react-typescript-clock">
-                    react-typescript-clock
-                  </a></span
-                >
+                <span><a href="https://github.com/ish-u/react-typescript-clock"> react-typescript-clock </a></span>
                 <br />
-                <span
-                  >A Simple Clock with 300+ Animated Gradient Backgrounds made
-                  with TypeScript + React</span
-                >
+                <span>A Simple Clock with 300+ Animated Gradient Backgrounds made with TypeScript + React</span>
                 <br />
 
-                <span style="font-size: small"
-                  >used:- React.JS, BootStrap
-                </span>
+                <span style="font-size: small">used:- React.JS, BootStrap </span>
               </div>
             </div>
           </div>
@@ -457,24 +402,14 @@
             </div>
             <div class="project_description">
               <div>
-                <span
-                  ><a
-                    href="https://github.com/ish-u/cs50w-projects/tree/master/project1-books"
-                  >
-                    infinity|book|reviews
-                  </a></span
-                >
+                <span><a href="https://github.com/ish-u/cs50w-projects/tree/master/project1-books"> infinity|book|reviews </a></span>
                 <br />
                 <span
-                  >a book review site that has around 5000 books. the project
-                  uses goodreads api for ratings and google book api for book
-                  descripton and cover
+                  >a book review site that has around 5000 books. the project uses goodreads api for ratings and google book api for book descripton and cover
                 </span>
                 <br />
 
-                <span style="font-size: small"
-                  >used:- Flask, PostgreSQL, GoogleBooks API, GoodReads API
-                </span>
+                <span style="font-size: small">used:- Flask, PostgreSQL, GoogleBooks API, GoodReads API </span>
               </div>
             </div>
           </div>
@@ -487,24 +422,15 @@
             </div>
             <div class="project_description">
               <div>
-                <span
-                  ><a
-                    href="https://github.com/ish-u/cs50w-projects/tree/master/project3-pizza"
-                  >
-                    anmol's pizzeria
-                  </a></span
-                >
+                <span><a href="https://github.com/ish-u/cs50w-projects/tree/master/project3-pizza"> anmol's pizzeria </a></span>
                 <br />
                 <span>
-                  anmol’s pizzeria - a django-web-app. this is a web application
-                  for handling a pizza restaurant’s online orders. the menu is
-                  taken from pinnochio’s pizza & subs
+                  anmol’s pizzeria - a django-web-app. this is a web application for handling a pizza restaurant’s online orders. the menu is taken from
+                  pinnochio’s pizza & subs
                 </span>
                 <br />
 
-                <span style="font-size: small"
-                  >used:- Django, PostgreSQL GoodReads API
-                </span>
+                <span style="font-size: small">used:- Django, PostgreSQL GoodReads API </span>
               </div>
             </div>
           </div>
@@ -517,21 +443,12 @@
             </div>
             <div class="project_description">
               <div>
-                <span
-                  ><a href="https://github.com/ish-u/spotify-maps-init-3">
-                    Spotify Maps
-                  </a></span
-                >
+                <span><a href="https://github.com/ish-u/spotify-maps-init-3"> Spotify Maps </a></span>
                 <br />
-                <span>
-                  Click on the Country and Get the Top 50 Songs of Country by
-                  Spotify Charts
-                </span>
+                <span> Click on the Country and Get the Top 50 Songs of Country by Spotify Charts </span>
                 <br />
 
-                <span style="font-size: small"
-                  >used:- React.JS, Spotify API, Exprees.JS, Bootstrap
-                </span>
+                <span style="font-size: small">used:- React.JS, Spotify API, Exprees.JS, Bootstrap </span>
               </div>
             </div>
           </div>
@@ -544,22 +461,12 @@
             </div>
             <div class="project_description">
               <div>
-                <span
-                  ><a href="https://github.com/ish-u/sorting_algorithms">
-                    Sorting Algorithms Analyser
-                  </a></span
-                >
+                <span><a href="https://github.com/ish-u/sorting_algorithms"> Sorting Algorithms Analyser </a></span>
                 <br />
-                <span>
-                  gui app made using tkinter which displays the graph of
-                  comparisons v/s size for 100 test cases for different sorting
-                  algortihms
-                </span>
+                <span> gui app made using tkinter which displays the graph of comparisons v/s size for 100 test cases for different sorting algortihms </span>
                 <br />
 
-                <span style="font-size: small"
-                  >used:- Python, Tkinter, matplotlib
-                </span>
+                <span style="font-size: small">used:- Python, Tkinter, matplotlib </span>
               </div>
             </div>
           </div>
@@ -578,9 +485,7 @@
       <div class="container hide" data-name="contact">
         <div class="title-container">
           <div class="close" data-name="contact"><b>x</b></div>
-          <div class="title">
-            <span>Contact Me</span>
-          </div>
+          <div class="title"><span>Contact Me</span>blog</div>
         </div>
         <div class="content" style="text-align: center">
           want to work on a cool project ? <br />
@@ -596,24 +501,16 @@
           <a href="https://www.linkedin.com/in/anmolgupta0/">linkedin</a>
           <a href="https://leetcode.com/ish-u/">leetcode</a>
           <a href="https://www.reddit.com/user/anmol_gupta_0">reddit</a>
-          <a href="https://open.spotify.com/user/6sgvw84ghr0r9oegtq48dszqu"
-            >spotify</a
-          >
+          <a href="https://open.spotify.com/user/6sgvw84ghr0r9oegtq48dszqu">spotify</a>
           <a href="https://www.twitch.tv/an60221023">twitch</a>
           <a href="https://twitter.com/UserNo0001">twitter</a>
-          <a href="https://www.youtube.com/channel/UCM5LZDjDd2icCkiyvhoqBGg"
-            >youtube</a
-          >
+          <a href="https://www.youtube.com/channel/UCM5LZDjDd2icCkiyvhoqBGg">youtube</a>
           <a href="https://www.instagram.com/user_no_01/">instagram</a>
           <a href="https://ish-u.github.io/">old website</a>
           <br />
 
           <div style="display: flex; justify-content: center; margin-top: 5%">
-            <img
-              src="https://c.tenor.com/4KP456_GUqQAAAAC/infinate-forever.gif"
-              height="192"
-              alt=""
-            />
+            <img src="https://c.tenor.com/4KP456_GUqQAAAAC/infinate-forever.gif" height="192" alt="" />
           </div>
         </div>
       </div>
@@ -642,27 +539,14 @@
             <img src="./static/Music Disc 2.ico" alt="" />
             <span>
               <!-- style="width: 50px" -->
-              <marquee
-                id="song-name"
-                width="50"
-                height="20"
-                behavior="scroll"
-                direction="left"
-                scrollamount="2"
-              >
-                Nothing
-              </marquee>
+              <marquee id="song-name" width="50" height="20" behavior="scroll" direction="left" scrollamount="2"> Nothing </marquee>
             </span>
           </div>
         </a>
       </div>
 
       <div class="taskbar">
-        <img
-          id="start-button"
-          src="https://i.pinimg.com/originals/0b/32/fb/0b32fb0f7b144ec745d4e3b5f3f783fa.png"
-          alt=""
-        />
+        <img id="start-button" src="https://i.pinimg.com/originals/0b/32/fb/0b32fb0f7b144ec745d4e3b5f3f783fa.png" alt="" />
         <div class="button active" data-name="about_me">
           <img src="./static/Info (gray).ICO" alt="" srcset="" />
           <span> About Me </span>
@@ -682,6 +566,10 @@
         <div class="button" data-name="contact" style="display: none">
           <img src="./static/Phone (2 of 5 diodes on).ico" alt="" />
           <span> Contact Me </span>
+        </div>
+        <div class="button active" data-name="paint" style="display: none">
+          <img src="./static/Paint.ico" alt="" srcset="" />
+          <span> Paint</span>
         </div>
 
         <div id="clock">12:44 AM</div>
@@ -708,6 +596,10 @@
           <img src="./static/Computer are Earth.ico" alt="" srcset="" />
           <span> Blog </span>
         </div>
+        <div class="menu-button" data-name="paint">
+          <img src="./static/Paint.ico" alt="" srcset="" />
+          <span> Paint </span>
+        </div>
         <div class="menu-button" data-name="contact">
           <img src="./static/Phone (2 of 5 diodes on).ico" alt="" />
           <span> Contact Me </span>
@@ -726,23 +618,10 @@
         <a href="https://spotify-readme.ishu2.repl.co/nowPlaying/url">
           <div class="mobile-song">
             <h4>Currently - Playing</h4>
-            <img
-              id="mobile-song-image"
-              src="./static/Music Disc 2.ico"
-              alt=""
-            />
+            <img id="mobile-song-image" src="./static/Music Disc 2.ico" alt="" />
             <br />
             <br />
-            <marquee
-              style="font-size: 30px"
-              width="70%"
-              id="mobile-song-name"
-              behavior="scroll"
-              direction="left"
-              scrollamount="5"
-            >
-              Nothing
-            </marquee>
+            <marquee style="font-size: 30px" width="70%" id="mobile-song-name" behavior="scroll" direction="left" scrollamount="5"> Nothing </marquee>
           </div>
         </a>
         <br />

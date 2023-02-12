@@ -256,14 +256,16 @@ a:visited {
   margin-left: 1%;
 }
 
-.exp-heading, .edu-heading {
+.exp-heading,
+.edu-heading {
   margin: 5px 10px;
-  font-size:larger;
+  font-size: larger;
   font-weight: bold;
   text-decoration: underline;
 }
 
-.exp-container, .edu-container {
+.exp-container,
+.edu-container {
   display: flex;
   width: 100%;
 }
@@ -280,18 +282,18 @@ a:visited {
 }
 
 .join-dot-open {
-  border:3px solid black;
+  border: 3px solid black;
   width: 13px;
-  height:13px;
-  border-radius:50%;
+  height: 13px;
+  border-radius: 50%;
 }
 
 .join-dot {
-  border:3px solid black;
+  border: 3px solid black;
   background-color: black;
   width: 13px;
-  height:13px;
-  border-radius:50%;
+  height: 13px;
+  border-radius: 50%;
 }
 
 .join-line {
@@ -300,7 +302,8 @@ a:visited {
   flex-grow: 1;
 }
 
-.exp-content, .edu-content {
+.exp-content,
+.edu-content {
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -408,28 +411,133 @@ a:visited {
   color: rgba(0, 0, 0, 0.7);
 }
 
-.paint{
+/* // PAINT */
+.paint {
   height: 100%;
+  width: 100%;
+  border: 1px solid true;
 }
 
-.paint-area{
-  height:85%;
-  border: 1px solid black;
+#paint-title {
+  margin-bottom: 0;
+  box-shadow: none;
+}
+
+.paint-area {
+  height: 85%;
+  width: 100%;
   display: flex;
 }
 
-.paint-options{
-  width: 15%; 
-  border: 1px solid black
+#paint-options {
+  width: 15%;
+  height: 100%;
+  background: #b5b3b3;
+  border-top: 2px solid grey;
+  border-bottom: 2px solid grey;
 }
-
-.paint-canvas{
+.paint-canvas {
+  box-shadow: inset 2px 2px 2px black;
   flex-grow: 1;
-  border: 1px solid black
-
+  overflow: hidden;
+  border-right: 5px solid #b5b3b3;
 }
 
-.paint-color{
-  height:15%;
-  border: 1px solid black
+#paint-colors {
+  height: calc(15%);
+  background: #b5b3b3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#color-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 308px;
+  height: 45px;
+  margin-left: 4px;
+}
+
+#color-switcher {
+  box-shadow: inset 1px 1px black, 1px 1px white;
+  box-sizing: border-box;
+  height: 45px;
+  width: 45px;
+  position: relative;
+  background-color: white;
+}
+
+.colors {
+  box-shadow: inset 1px 1px black, 1px 1px white;
+  border-bottom: 1px solid #c0c0c0;
+  border-right: 1px solid #c0c0c0;
+  border-top: 1px solid #808080;
+  border-left: 1px solid #808080;
+  box-sizing: border-box;
+  margin: 1px;
+  padding: 0;
+  height: 20px;
+  width: 20px;
+}
+
+#color-one,
+#color-two {
+  height: 18px;
+  width: 18px;
+  box-shadow: 1px 1px #808080;
+  border: 0.25px solid #c0c0c0;
+  box-sizing: border-box;
+}
+#color-one {
+  position: absolute;
+  left: 9px;
+  top: 9px;
+  background: #000;
+  z-index: 1;
+}
+
+#color-two {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  background: #fff;
+}
+
+#paint-tools {
+  width: calc(100%-10px);
+  margin: 5px 10px;
+}
+.paint-tool {
+  height: 25%;
+  width: 25%;
+}
+
+#stroke-menu {
+  box-shadow: inset 1px 1px grey, 0.5px 0.5px white;
+  height: 90px;
+  width: calc(100%-10px);
+  margin: 5px 10px;
+}
+
+.stroke-option {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stroke-option-selected {
+  background-color: blue;
+}
+
+.stroke-option-selected line {
+  height: 5px;
+  width: calc(100% - 20px);
+  stroke: rgb(255, 255, 255) !important;
+}
+
+.stroke-option svg {
+  height: 5px;
+  width: calc(100% - 20px);
 }

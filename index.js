@@ -1,4 +1,129 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  // Canvas Initialization
+  // ==========================================
+  const canvas = document.getElementById("canvas");
+  let strokeColor = "rgb(10,10,10)";
+  let strokeWidth = 1;
+  let secondStrokeColor = "rgb(255,255,255)";
+
+  const ctx = canvas.getContext("2d");
+  ctx.canvas.width = canvas.parentElement.clientWidth;
+  ctx.canvas.height = canvas.parentElement.clientHeight;
+  ctx.strokeStyle = "red";
+
+  // const bounding = canvas.getBoundingClientRect();
+  let mouseX = 0;
+  let mouseY = 0;
+  let isDrawing = false;
+
+  canvas.addEventListener("mousedown", (e) => {
+    const bounding = canvas.getBoundingClientRect();
+    mouseX = e.clientX - bounding.left;
+    mouseY = e.clientY - bounding.top;
+    isDrawing = true;
+  });
+
+  canvas.addEventListener("mousemove", async (e) => {
+    if (isDrawing) {
+      const bounding = canvas.getBoundingClientRect();
+      ctx.beginPath();
+      ctx.strokeStyle = strokeColor;
+      ctx.lineWidth = strokeWidth;
+      console.log(strokeWidth);
+      ctx.moveTo(mouseX, mouseY);
+      ctx.lineTo(e.clientX - bounding.left, e.clientY - bounding.top);
+      ctx.stroke();
+      mouseX = e.clientX - bounding.left;
+      mouseY = e.clientY - bounding.top;
+    }
+  });
+
+  canvas.addEventListener("mouseup", (_) => {
+    isDrawing = false;
+  });
+
+  // Adding color
+  const defaultColors = [
+    "rgb(0,0,0)", // Black
+    "rgb(128,128,128)", // Dark Gray
+    "rgb(128,0,0)", // Dark Red
+    "rgb(128,128,0)", // Pea Green
+    "rgb(0,128,0)", // Dark Green
+    "rgb(0,128,128)", // Slate
+    "rgb(0,0,128)", // Dark Blue
+    "rgb(128,0,128)", // Lavender
+    "rgb(128,128,64)", //
+    "rgb(0,64,64)", //
+    "rgb(0,128,255)", //
+    "rgb(0,64,128)", //
+    "rgb(64,0,255)", //
+    "rgb(128,64,0)", //
+
+    "rgb(255,255,255)", // White
+    "rgb(192,192,192)", // Light Gray
+    "rgb(255,0,0)", // Bright Red
+    "rgb(255,255,0)", // Yellow
+    "rgb(0,255,0)", // Bright Green
+    "rgb(0,255,255)", // Cyan
+    "rgb(0,0,255)", // Bright Blue
+    "rgb(255,0,255)", // Magenta
+    "rgb(255,255,128)", //
+    "rgb(0,255,128)", //
+    "rgb(128,255,255)", //
+    "rgb(128,128,255)", //
+    "rgb(255,0,128)", //
+    "rgb(255,128,64)",
+  ].map((item) => {
+    const color = document.createElement("div");
+    color.classList.add("colors");
+    color.style.background = item;
+    color.addEventListener("click", () => {
+      strokeColor = item;
+      document.getElementById("color-one").style.background = strokeColor;
+    });
+    return color;
+  });
+
+  const colorList = document.getElementById("color-list");
+  colorList.append(...defaultColors);
+
+  // setting the colors of the color switcher
+  document.getElementById("color-one").style.background = strokeColor;
+  document.getElementById("color-two").style.background = secondStrokeColor;
+
+  // color switcher
+  document.getElementById("color-switcher").addEventListener("click", () => {
+    const temp = strokeColor;
+    strokeColor = secondStrokeColor;
+    secondStrokeColor = temp;
+
+    // setting the colors of the color switcher
+    document.getElementById("color-one").style.background = strokeColor;
+    document.getElementById("color-two").style.background = secondStrokeColor;
+  });
+
+  window.addEventListener("resize", () => {
+    ctx.canvas.width = canvas.parentElement.clientWidth;
+    ctx.canvas.height = canvas.parentElement.clientHeight;
+  });
+
+  // stroke menu - for line width
+  const strokeOptions = document.getElementsByClassName("stroke-option");
+  for (let i = 0; i < strokeOptions.length; i++) {
+    strokeOptions.item(i).addEventListener("click", () => {
+      strokeWidth = i + 1;
+      const strokeOptionsTemp = document.getElementsByClassName("stroke-option");
+      for (let j = 0; j < strokeOptionsTemp.length; j++) {
+        if (i === j) {
+          strokeOptionsTemp.item(j).className = "stroke-option stroke-option-selected";
+        } else {
+          strokeOptionsTemp.item(j).className = "stroke-option";
+        }
+      }
+    });
+  }
+  // ==========================================
+
   // Fetching Song Status and Blogs
   getSongDetails();
   getBlogs();
@@ -6,6 +131,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   setTimeout(() => {
     document.getElementById("content").style.display = "block";
     document.getElementById("loader").style.display = "none";
+    // setting canvas height and width
+    ctx.canvas.width = canvas.parentElement.clientWidth;
+    ctx.canvas.height = canvas.parentElement.clientHeight;
     // document.getElementById("banner").style.display = "flex";
   }, 1000);
 
@@ -56,51 +184,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       changeActiveButton(startMenuButton.item(i), false);
     });
   }
-
-  // // Canvas
-  // let canvas = document.getElementById("canvas");
-  // const ctx = canvas.getContext("2d");
-  // //
-  // let mouseX = 0;
-  // let mouseY = 0;
-  // ctx.strokeStyle = "black"; // initial brush color
-  // ctx.lineWidth = 10; // initial brush width
-  // let boundings = canvas.getBoundingClientRect();
-  // let isDrawing = false;
-  // // ctx.moveTo(0, 0);
-  // // ctx.lineTo(300, 400);
-  // //
-  // ctx.moveTo(mouseX, mouseY);
-  // ctx.lineTo(200, 100);
-  // ctx.stroke();
-  // canvas.addEventListener("mousedown", (e) => {
-  //   console.log("down");
-  //   // mouseX = e.clientX;
-  //   // mouseY = e.clientY;
-  //   mouseX = e.clientX - boundings.left;
-  //   mouseY = e.clientY - boundings.top;
-  //   isDrawing = true;
-  // });
-  //
-  // canvas.addEventListener("mousemove", (e) => {
-  //   if (isDrawing) {
-  //     console.log("move", e.clientX, e.clientY, mouseX, mouseY);
-  //     ctx.strokeStyle = "black"; // initial brush color
-  //     ctx.lineWidth = 1; // initial brush width
-  //     // ctx.moveTo(mouseX, mouseY);
-  //     ctx.lineTo(e.clientX - boundings.left, e.clientY - boundings.top);
-  //     ctx.stroke();
-  //     mouseX = e.clientX - boundings.left;
-  //     mouseY = e.clientY - boundings.top;
-  //   }
-  // });
-  //
-  // canvas.addEventListener("mouseup", (e) => {
-  //   console.log("up");
-  //   mouseX = e.clientX - boundings.left;
-  //   mouseY = e.clientY - boundings.top;
-  //   isDrawing = false;
-  // });
 });
 
 // Clock Function
@@ -112,9 +195,7 @@ setInterval(() => {
 // Change Active Button
 function changeActiveButton(button, resetWindow) {
   const window = document.querySelector(`[data-name=${button.dataset.name}]`);
-  const taskBarButton = document.querySelector(
-    `.button[data-name=${button.dataset.name}]`
-  );
+  const taskBarButton = document.querySelector(`.button[data-name=${button.dataset.name}]`);
   if (resetWindow === true) {
     window.style.left = "25vw";
     window.style.top = "10vh";
@@ -125,10 +206,7 @@ function changeActiveButton(button, resetWindow) {
       taskBarButton.style.display = "none";
     }
   } else {
-    if (
-      button.className === "button" ||
-      button.className === "button minimized"
-    ) {
+    if (button.className === "button" || button.className === "button minimized") {
       button.className = "button active";
       window.className = "container";
       // moveWindowToFront(button.dataset.name);
@@ -146,6 +224,7 @@ function changeActiveButton(button, resetWindow) {
 
 // Move the clicked window to front
 function moveWindowToFront(windowName) {
+  console.log(windowName);
   const windows = document.querySelectorAll(".container:not(.hide)");
   let zValues = [];
   for (let i = 0; i < windows.length; i++) {
@@ -161,6 +240,14 @@ function moveWindowToFront(windowName) {
     } else {
       windows.item(i).style.zIndex = Number(windows.item(i).style.zIndex) - 1;
     }
+  }
+
+  // setting canvas dimensions if they are not there
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+  if (!ctx.canvas.height || !ctx.canvas.width) {
+    ctx.canvas.width = canvas.parentElement.clientWidth;
+    ctx.canvas.height = canvas.parentElement.clientHeight;
   }
 }
 
@@ -208,8 +295,7 @@ async function getBlogs() {
       resJSON.forEach((blog) => {
         // creating blogList 'li' elements
         const li = document.createElement("li");
-        li.innerHTML =
-          blog.title + " - " + new Date(blog.date).toLocaleDateString();
+        li.innerHTML = blog.title + " - " + new Date(blog.date).toLocaleDateString();
         li.style = "color:blue; text-decoration:underline;";
         li.addEventListener("click", function () {
           showBlog(blog);
@@ -218,8 +304,7 @@ async function getBlogs() {
 
         // back button
         const backButton = document.createElement("a");
-        backButton.style =
-          "color:blue; text-decoration:underline; margin-left: 10px; margin-top:1px";
+        backButton.style = "color:blue; text-decoration:underline; margin-left: 10px; margin-top:1px";
         backButton.innerHTML = "go back";
         backButton.addEventListener("click", function () {
           hideBlog();
@@ -262,12 +347,8 @@ async function getSongDetails() {
       const songImage = document.querySelectorAll(".social-link img")[3];
       const mobile_songImage = document.getElementById("mobile-song-image");
 
-      songImage.src =
-        "https://spotify-readme.ishu2.repl.co/nowPlaying/image?t=" +
-        new Date().getMilliseconds();
-      mobile_songImage.src =
-        "https://spotify-readme.ishu2.repl.co/nowPlaying/image?t=" +
-        new Date().getMilliseconds();
+      songImage.src = "https://spotify-readme.ishu2.repl.co/nowPlaying/image?t=" + new Date().getMilliseconds();
+      mobile_songImage.src = "https://spotify-readme.ishu2.repl.co/nowPlaying/image?t=" + new Date().getMilliseconds();
 
       // updating Text
       let songText = resJSON.name;
@@ -289,8 +370,7 @@ function dragElement(elmnt) {
     pos3 = 0,
     pos4 = 0;
 
-  elmnt.getElementsByClassName("title-container")[0].onmousedown =
-    dragMouseDown;
+  elmnt.getElementsByClassName("title-container")[0].onmousedown = dragMouseDown;
 
   function dragMouseDown(e) {
     e = e || window.event;
@@ -314,10 +394,7 @@ function dragElement(elmnt) {
     pos3 = e.clientX;
     pos4 = e.clientY;
     // set the element's new position:
-    let offsetLeft =
-      elmnt.offsetLeft - pos1 > e.clientX
-        ? elmnt.offsetLeft - e.clientY
-        : elmnt.offsetLeft - pos1;
+    let offsetLeft = elmnt.offsetLeft - pos1 > e.clientX ? elmnt.offsetLeft - e.clientY : elmnt.offsetLeft - pos1;
     elmnt.style.top = elmnt.offsetTop - pos2 + "px";
     elmnt.style.left = offsetLeft + "px";
   }
