@@ -102,11 +102,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("color-two").style.background = secondStrokeColor;
   });
 
-  window.addEventListener("resize", () => {
-    ctx.canvas.width = canvas.parentElement.clientWidth;
-    ctx.canvas.height = canvas.parentElement.clientHeight;
-  });
-
   // stroke menu - for line width
   const strokeOptions = document.getElementsByClassName("stroke-option");
   for (let i = 0; i < strokeOptions.length; i++) {
@@ -405,5 +400,3 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
-
-// PAINT
