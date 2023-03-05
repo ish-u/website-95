@@ -298,7 +298,7 @@ async function getBlogs() {
         blogList.appendChild(li);
 
         // back button
-        const backButton = document.createElement("a");
+        const backButton = document.createElement("span");
         backButton.style = "color:blue; text-decoration:underline; margin-left: 10px; margin-top:1px";
         backButton.innerHTML = "go back";
         backButton.addEventListener("click", function () {
